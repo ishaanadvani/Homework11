@@ -1,0 +1,29 @@
+---
+title: "Vancouver"
+author: "Ishaan Advani"
+date: "3 December 2017"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This R MarkDown will help in plotting break-ins for all the requested years on Vancouvers map.
+
+I will first call the configuration file.
+```{r cars}
+source("VancouverConfig.R")
+```
+
+I will use the plot_crime function in order to come up with plots for every year
+```{r pressure, echo=FALSE}
+dat <- load_filtered_dataset()
+unique_years <- unique(dat$YEAR)
+
+for (b in 1:length(unique_years))
+{
+  cur_year <- unique_years[b]
+  plot_crime(cur_year, dat)
+}
+```
